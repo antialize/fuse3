@@ -1039,7 +1039,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         }
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_init(
         &mut self,
         request: Request,
@@ -1321,7 +1321,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         Ok(reply.max_write)
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_lookup(
         &mut self,
         request: Request,
@@ -1374,7 +1374,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
     }
 
     /// if Ok(true), quit the dispatch
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_forget(
         &mut self,
         request: Request,
@@ -1409,7 +1409,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_getattr(
         &mut self,
         request: Request,
@@ -1476,7 +1476,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_setattr(
         &mut self,
         request: Request,
@@ -1537,7 +1537,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, fs))]
+    #[instrument(level = "debug", skip(self, fs))]
     async fn handle_readlink(&mut self, request: Request, in_header: fuse_in_header, fs: &Arc<FS>) {
         let resp_sender = self.response_sender().clone();
         let fs = fs.clone();
@@ -1565,7 +1565,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_symlink(
         &mut self,
         request: Request,
@@ -1638,7 +1638,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_mknod(
         &mut self,
         request: Request,
@@ -1718,7 +1718,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_mkdir(
         &mut self,
         request: Request,
@@ -1803,7 +1803,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_unlink(
         &mut self,
         request: Request,
@@ -1853,7 +1853,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_rmdir(
         &mut self,
         request: Request,
@@ -1903,7 +1903,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_rename(
         &mut self,
         request: Request,
@@ -1998,7 +1998,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_link(
         &mut self,
         request: Request,
@@ -2072,7 +2072,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_open(
         &mut self,
         request: Request,
@@ -2127,7 +2127,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_read(
         &mut self,
         request: Request,
@@ -2193,7 +2193,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_write(
         &mut self,
         request: Request,
@@ -2271,7 +2271,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, fs))]
+    #[instrument(level = "debug", skip(self, fs))]
     async fn handle_statfs(&mut self, request: Request, in_header: fuse_in_header, fs: &Arc<FS>) {
         let resp_sender = self.response_sender().clone();
         let fs = fs.clone();
@@ -2303,7 +2303,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_release(
         &mut self,
         request: Request,
@@ -2370,7 +2370,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_fsync(
         &mut self,
         request: Request,
@@ -2425,7 +2425,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_setxattr(
         &mut self,
         request: Request,
@@ -2523,7 +2523,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_getxattr(
         &mut self,
         request: Request,
@@ -2612,7 +2612,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_listxattr(
         &mut self,
         request: Request,
@@ -2688,7 +2688,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_removexattr(
         &mut self,
         request: Request,
@@ -2739,7 +2739,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_flush(
         &mut self,
         request: Request,
@@ -2792,7 +2792,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_opendir(
         &mut self,
         request: Request,
@@ -2847,7 +2847,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_readdir(
         &mut self,
         request: Request,
@@ -2953,7 +2953,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_releasedir(
         &mut self,
         request: Request,
@@ -3006,7 +3006,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_fsyncdir(
         &mut self,
         request: Request,
@@ -3062,7 +3062,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
     }
 
     #[cfg(feature = "file-lock")]
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_getlk(
         &mut self,
         request: Request,
@@ -3130,7 +3130,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
     }
 
     #[cfg(feature = "file-lock")]
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_setlk(
         &mut self,
         request: Request,
@@ -3200,7 +3200,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_access(
         &mut self,
         request: Request,
@@ -3253,7 +3253,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_create(
         &mut self,
         request: Request,
@@ -3336,7 +3336,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_interrupt(&mut self, request: Request, data: &[u8], fs: &Arc<FS>) {
         let interrupt_in = match fuse_interrupt_in::read_from_prefix(data) {
             Err(err) => {
@@ -3380,7 +3380,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_bmap(
         &mut self,
         request: Request,
@@ -3438,7 +3438,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_poll(
         &mut self,
         request: Request,
@@ -3512,7 +3512,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_notify_reply(
         &mut self,
         request: Request,
@@ -3633,7 +3633,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_fallocate(
         &mut self,
         request: Request,
@@ -3693,7 +3693,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_readdirplus(
         &mut self,
         request: Request,
@@ -3811,7 +3811,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_rename2(
         &mut self,
         request: Request,
@@ -3912,7 +3912,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_lseek(
         &mut self,
         request: Request,
@@ -3972,7 +3972,7 @@ impl<FS: Filesystem + Send + Sync + 'static> Session<FS> {
         });
     }
 
-    #[instrument(skip(self, data, fs))]
+    #[instrument(level = "debug", skip(self, data, fs))]
     async fn handle_copy_file_range(
         &mut self,
         request: Request,
